@@ -1,0 +1,107 @@
+
+
+<Loginscreen>:
+    #background_color: .8, .8, 0, 1
+    id:obj       
+    AnchorLayout:
+        anchor_x: "center"
+        padding:30
+        spacing:30
+        GridLayout:
+            cols: 3
+            padding:150
+            spacing:40
+            Label:
+                size_hint: 0.01,0.01
+                text: "Email Id"
+                bold: True
+                font_name: "data/fonts/RobotoMono-Regular.ttf"
+                font_size: 20
+
+            TextInput:
+                id:user_id
+                size_hint: 0.7,0.1
+                text: "dummymailcoding@gmail.com"
+                font_size:20
+                multiline: False
+
+            Label:
+                size_hint: 0.1,0.1
+                text: ""
+
+            Label:
+                size_hint: 0.1,0.1
+                text: "Password"
+                bold: True
+                font_name: "data/fonts/RobotoMono-Regular.ttf"
+                font_size: 20
+               
+            TextInput:
+                id:password
+                size_hint: 0.7,0.1
+
+                password: True
+                text: "march83@95"
+                font_size:20
+                multiline: False
+                #on_text: viewer.text = self.text 
+            Label:
+                size_hint: 0.1,0.1
+                text: ""
+            Label:
+                size_hint: 0.1,0.1
+                text: ""
+            Button:
+                size_hint: 0.7,0.1
+                text: "Login"
+                on_release:obj.loginThread(user_id.text,password.text)# tranfer user id and password
+                #on_release:app.root.current = "sc2"
+            Label:
+                size_hint: 0.1,0.1
+                text: ""
+<Mailscreen>:
+    id:obj
+    BoxLayout:
+        orientation:'vertical'
+        padding:10
+        spacing:10
+        Label:
+            text:'Email Composer Using Python'
+            size_hint:1,0.1
+            font_size:18
+        
+        TextInput:
+            id:to_email
+            text:"To Email..."
+            font_size:16
+            size_hint:1,0.1
+            on_selection_text:self.text = ""
+            multiline:False
+        TextInput:
+            id:subject
+            text:"Subject..."
+            font_size:16
+            size_hint:1,0.1
+            on_selection_text:self.text = ""
+            multiline:False
+        TextInput:
+            id:msg
+            text:"Enter your msg here..."
+            font_size:16
+            size_hint:1,0.6
+            on_selection_text:self.text = ""
+            multiline:True
+        BoxLayout:
+            spacing:10
+            padding:10
+            size_hint:1,0.1
+            Button:
+                text:'Send Email'
+                font_size:16
+                size_hint:0.5,1
+                on_release:obj.sendMailThread(msg.text,subject.text,to_email.text)
+            Button:
+                text:'Logout'
+                font_size:16
+                size_hint:0.5,1
+            
